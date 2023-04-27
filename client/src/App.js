@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>CRUD Movie Reviews</h1>
+      <h1>Grant's Movie Reviews</h1>
       <div className="form">
         <label>Movie Name:</label>
         <input
