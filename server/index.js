@@ -9,7 +9,7 @@ const db = mysql.createPool({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_SCHEMA_RECIPES || "CRUDMovieReviews",
+  database: process.env.DB_SCHEMA_MOVIES || "CRUDMovieReviews",
 });
 
 app.use(cors());
@@ -81,6 +81,13 @@ app.put("/api/update", (req, res) => {
   });
 });
 */
-app.listen(3007, () => {
-  console.log("running on port 3007");
+var myPort = process.env.PORT || 3007;
+
+app.listen(myPort, () => {
+  console.log(`server started on port ` + myPort);
+  console.log(`connected to DB with DB_HOST: ` + process.env.DB_HOST);
+  console.log(`connected to DB with DB_USERNAME: ` + process.env.DB_USERNAME);
+  console.log(
+    `connected to DB with DB_SCHEMA_RECIPES: ` + process.env._DB_SCHEMA_MOVIES
+  );
 });
