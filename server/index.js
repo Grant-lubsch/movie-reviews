@@ -13,8 +13,13 @@ const db = mysql.createPool({
 });
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "build")));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.get("/api/get", (req, res) => {
   const sqlSelect = "SELECT * FROM movie_reviews";
