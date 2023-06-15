@@ -9,10 +9,7 @@ const db = mysql.createPool({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD,
-  // host: "localhost",
-  // user: "root",
-  // password: "AsDfGh12!",
-  database: "CRUDMovieReviews",
+  database: process.env.DB_SCHEMA_RECIPES || "CRUDMovieReviews",
 });
 
 app.use(cors());
