@@ -10,13 +10,13 @@ function App() {
   const [newReview, setNewReview] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:3007/api/get").then((response) => {
+    Axios.get("/api/get").then((response) => {
       setMovieList(response.data);
     });
   }, []);
 
   const submitReview = () => {
-    Axios.post("http://localhost:3007/api/insert", {
+    Axios.post("/api/insert", {
       movieName: movieName,
       movieReview: review,
     });
@@ -28,15 +28,13 @@ function App() {
   };
 
   const deleteReview = (movie) => {
-    Axios.delete(`http://localhost:3007/api/delete/${movie}`).then(
-      (response) => {
-        setMovieList(movieReviewList.filter((val) => val.movieName !== movie));
-      }
-    );
+    Axios.delete(`/api/delete/${movie}`).then((response) => {
+      setMovieList(movieReviewList.filter((val) => val.movieName !== movie));
+    });
   };
 
   const updateReview = (movie) => {
-    Axios.put("http://localhost:3007/api/update", {
+    Axios.put("/api/update", {
       movieName: movie,
       movieReview: newReview,
     }).then((response) => {
